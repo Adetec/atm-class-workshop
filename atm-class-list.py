@@ -6,7 +6,7 @@ class ATM:
 
     def withdraw(self, request):
 
-        print("Current balance = ", self.balance)
+        print("Current balance = "+ str(self.balance))
         result = self.balance
 
         if request > self.balance:
@@ -27,7 +27,8 @@ class ATM:
             if request % 5 != 0:
                 print('give ' + str(request) + ' pieces')
                 request = 0
-
+            self.balance -= result
+            
         return result
 
     def show_withdrawals(self):
