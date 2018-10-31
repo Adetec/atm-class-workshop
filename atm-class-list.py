@@ -27,13 +27,13 @@ class ATM:
             if request % 5 != 0:
                 print('give ' + str(request) + ' pieces')
                 request = 0
-            self.balance -= result
-            
-        return result
+            self.balance = result
+            print("new balance: "+str(self.balance))
+        return self.balance
 
     def show_withdrawals(self):
         for withdrawal in self.withdrawals_list:
-            print(withdrawal)
+            print("withdrawal: " + str(withdrawal))
 
 
 balance1 = 500
