@@ -1,12 +1,28 @@
 class ATM:
     def __init__(self, bank_name, balance):
-        self.bank_bame = bank_name
+        self.bank_name = bank_name
         self.balance = balance
         self.withdrawals_list = []
 
+    def get_current_balance(self):
+        print("Current balance = " + str(self.balance))
+
+    def give_money(self, request):
+        notes = [100, 50, 10, 5]
+        for note in notes:
+            while request >= note:
+                request -= note
+                print("give " + str(note))
+        if request % 5 != 0:
+            print('give ' + str(request) + ' pieces')
+            request = 0
+
+    def get_new_balance(self):
+        print("new balance: " + str(self.balance))
+
     def withdraw(self, request):
 
-        print("Current balance = "+ str(self.balance))
+        self.get_current_balance()
 
         if request > self.balance:
             print("Can't give you all this money !!")
@@ -17,17 +33,9 @@ class ATM:
         else:
             self.withdrawals_list.append(request)
             self.balance -= request
+            self.give_money(request)
+            self.get_new_balance()
 
-            notes = [100, 50, 10, 5]
-            for note in notes:
-                while request >= note:
-                    request -= note
-                    print("give " + str(note))
-            if request % 5 != 0:
-                print('give ' + str(request) + ' pieces')
-                request = 0
-
-            print("new balance: "+str(self.balance))
         return self.balance
 
     def show_withdrawals(self):
