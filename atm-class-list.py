@@ -4,9 +4,6 @@ class ATM:
         self.balance = balance
         self.withdrawals_list = []
 
-    def get_current_balance(self):
-        print("Current balance = " + str(self.balance))
-
     def give_money(self, request):
         notes = [100, 50, 10, 5]
         for note in notes:
@@ -17,12 +14,9 @@ class ATM:
             print('give ' + str(request) + ' pieces')
             request = 0
 
-    def get_new_balance(self):
-        print("new balance: " + str(self.balance))
-
     def withdraw(self, request):
 
-        self.get_current_balance()
+        print("Current balance = " + str(self.balance))
 
         if request > self.balance:
             print("Can't give you all this money !!")
@@ -34,7 +28,7 @@ class ATM:
             self.withdrawals_list.append(request)
             self.balance -= request
             self.give_money(request)
-            self.get_new_balance()
+            print("new balance: " + str(self.balance))
 
         return self.balance
 
